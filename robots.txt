@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tscryptop.github.io/maini-game-com-cn/sitemap.xml
