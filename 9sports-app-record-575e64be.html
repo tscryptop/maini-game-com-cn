@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九游体育 · 轻量导航介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f8f6f2;
+            color: #2e2b28;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            padding: 32px 28px 48px;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #eae5de;
+            margin-bottom: 28px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            background: #1f3a3f;
+            color: #f8f6f2;
+            font-weight: 600;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 550;
+            letter-spacing: 0.02em;
+            color: #2e2b28;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #4f4944;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b09a84;
+        }
+
+        .nav-links .active {
+            border-bottom-color: #7f6b58;
+            font-weight: 500;
+        }
+
+        /* hero */
+        .hero {
+            background: #f4f0ea;
+            border-radius: 24px;
+            padding: 32px 28px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #1f3a3f;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #4f4944;
+            max-width: 680px;
+        }
+
+        .hero .highlight-line {
+            margin-top: 18px;
+            background: #e8e0d6;
+            padding: 12px 18px;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        /* 三个场景模块 */
+        .scenes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .scene-card {
+            background: #faf8f5;
+            border-radius: 20px;
+            padding: 24px 18px 22px;
+            border: 1px solid #ece7e0;
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .scene-card .icon-placeholder {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #d6ccc2;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        .scene-card h3 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            margin-bottom: 8px;
+            color: #2e2b28;
+        }
+
+        .scene-card p {
+            font-size: 0.9rem;
+            color: #5f5852;
+            line-height: 1.5;
+        }
+
+        /* 引用块 / 提示框 */
+        .notice-block {
+            background: #ede8e0;
+            border-left: 6px solid #7f6b58;
+            padding: 18px 22px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+            color: #3d3833;
+        }
+
+        .notice-block strong {
+            color: #1f3a3f;
+        }
+
+        /* 常见说明 (FAQ 摘要) */
+        .faq-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eae5de;
+            padding-bottom: 14px;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #2e2b28;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #5a524c;
+            line-height: 1.5;
+        }
+
+        .faq-item .a a {
+            color: #4f6b6b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .faq-item .a a:hover {
+            color: #1f3a3f;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eae5de;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7a726a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .page {
+                padding: 24px 16px 36px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .scenes {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 24px 18px;
+            }
+
+            .hero h1 {
+                font-size: 1.35rem;
+            }
+
+            .notice-block {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 顶部导航 -->
+        <nav class="top-nav">
+            <div class="logo-area">
+                <span class="logo-mark">9S</span>
+                <span class="logo-text">九游体育</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">功能</a>
+                <a href="#">说明</a>
+                <a href="#">常见问题</a>
+            </div>
+        </nav>
+
+        <!-- hero 介绍 -->
+        <section class="hero">
+            <h1>快速识别 <a href="https://9sports-app.com" style="color: #1f3a3f; text-decoration: underline; text-underline-offset: 4px;">九游体育</a> 的用途</h1>
+            <p>这是一个整合体育资讯、赛事动态与基础数据的轻量平台。无论你想了解联赛走势、球队近况，还是关注体育社区讨论，这里都能提供直接、清晰的入口。</p>
+            <div class="highlight-line">📋 页面定位：导航式介绍 · 聚焦场景与常见说明</div>
+        </section>
+
+        <!-- 三个场景模块 -->
+        <div class="scenes">
+            <div class="scene-card">
+                <div class="icon-placeholder">📊</div>
+                <h3>快速浏览赛况</h3>
+                <p>从首页即可获取当日重点赛事的比分、关键事件与实时数据，无需层层跳转。适合赛前预览和赛后回顾。</p>
+            </div>
+            <div class="scene-card">
+                <div class="icon-placeholder">📁</div>
+                <h3>球队与联赛档案</h3>
+                <p>按联赛或球队维度整理历史战绩、阵容变动与近期走势。信息结构偏平，方便横向对比。</p>
+            </div>
+            <div class="scene-card">
+                <div class="icon-placeholder">💬</div>
+                <h3>社区观点聚合</h3>
+                <p>收录来自不同渠道的讨论摘要、分析贴与简短评论，帮助用户快速了解多方视角，节省筛选时间。</p>
+            </div>
+        </div>
+
+        <!-- 提示框 / 引用块 -->
+        <div class="notice-block">
+            <strong>⚡ 使用提示</strong> · 网站内容以信息聚合与导航为主，不提供实时投注或博彩功能。所有比赛数据均来自公开来源，请理性参考。
+        </div>
+
+        <!-- 常见说明（FAQ 摘要） -->
+        <div style="margin-bottom: 10px; font-weight: 550; font-size: 1.05rem; color: #2e2b28;">常见说明</div>
+        <div class="faq-summary">
+            <div class="faq-item">
+                <div class="q">这个网站主要提供什么？</div>
+                <div class="a">面向体育爱好者，整合赛事信息、数据统计与相关讨论入口。你可以把这里当作一个信息集合页，快速找到你关心的内容。关于更详细的功能，请直接访问 <a href="https://9sports-app.com">九游体育</a> 了解。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">需要注册或下载吗？</div>
+                <div class="a">大部分内容可直接浏览。部分社区互动或个性化功能可能需要简单注册，具体以网站实际页面提示为准。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">数据更新频率如何？</div>
+                <div class="a">核心赛事数据（比分、赛程）基本实时同步，球队档案与历史数据每日刷新。如遇大型赛事期间，更新节奏会相应加快。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">移动端适配情况如何？</div>
+                <div class="a">页面采用响应式设计，手机、平板均可正常使用。部分数据表格在窄屏下会以卡片形式呈现，不影响核心阅读。</div>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            本介绍页仅为信息整理，不构成任何建议 · 数据来源请以 <a href="https://9sports-app.com" style="color: #4f6b6b;">九游体育</a> 实际内容为准
+        </div>
+    </div>
+</body>
+</html>
