@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>时时彩 · 产品说明</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f1f8fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1b2e3c;
+            line-height: 1.6;
+            padding: 1.25rem 1rem 2.8rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        /* 网格卡片骨架 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(1px);
+            border-radius: 28px;
+            padding: 1.6rem 1.5rem;
+            box-shadow: 0 6px 18px rgba(18, 72, 85, 0.06);
+            border: 1px solid rgba(36, 148, 149, 0.15);
+            transition: all 0.2s ease;
+        }
+        .card:hover {
+            border-color: #269c9b;
+            box-shadow: 0 8px 22px rgba(12, 110, 117, 0.08);
+            background: #ffffff;
+        }
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+            font-size: 1.15rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.65rem;
+            color: #0f4b55;
+        }
+        .card h3::before {
+            content: "◈";
+            color: #289f9e;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #1f3c47;
+            margin-bottom: 0.4rem;
+        }
+        .card .meta-note {
+            font-size: 0.85rem;
+            color: #417e85;
+            border-top: 1px dashed #b2d6d9;
+            padding-top: 0.6rem;
+            margin-top: 0.8rem;
+        }
+        /* hero 区域 */
+        .hero {
+            margin-bottom: 2.6rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            color: #0a3b42;
+            line-height: 1.2;
+            margin: 0.3rem 0 0.5rem;
+        }
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #2a6e77;
+            border-left: 4px solid #289f9e;
+            padding-left: 1rem;
+            margin: 0.5rem 0 1.2rem;
+            font-weight: 450;
+            background: rgba(40, 159, 158, 0.04);
+            border-radius: 0 12px 12px 0;
+            max-width: 80%;
+        }
+        .hero p {
+            font-size: 1rem;
+            color: #1f4a53;
+            max-width: 720px;
+        }
+        .badge {
+            display: inline-block;
+            background: #d2edef;
+            color: #07545a;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            vertical-align: middle;
+            margin-right: 0.4rem;
+            border: 1px solid #8ec9cb;
+        }
+        .intro-section {
+            background: #e5f5f3;
+            border-radius: 40px;
+            padding: 1.8rem 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #aad3d3;
+        }
+        .intro-section p {
+            font-size: 0.98rem;
+            color: #123e48;
+        }
+        .intro-section strong {
+            color: #0a595b;
+        }
+        .link-wrapper {
+            margin: 2.5rem 0 1.2rem;
+            padding: 0.2rem 0;
+        }
+        .inline-link {
+            color: #0b6b6f;
+            text-decoration: none;
+            font-weight: 550;
+            border-bottom: 2px solid #289f9e;
+            transition: 0.15s;
+        }
+        .inline-link:hover {
+            background: #c4e6e5;
+            border-bottom-color: #124e50;
+            color: #023a3d;
+        }
+        .faq-mini {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #b7d9db;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #0b4952;
+            width: 70%;
+        }
+        .faq-a {
+            font-size: 0.9rem;
+            color: #286871;
+            width: 28%;
+            text-align: right;
+        }
+        .footer-note {
+            margin-top: 2.8rem;
+            font-size: 0.85rem;
+            color: #3d7379;
+            border-top: 1px solid #b7d6d8;
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .footer-note span {
+            opacity: 0.75;
+        }
+        /* 移动端精细调整 */
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.75rem 2rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .hero .tagline { max-width: 100%; font-size: 1rem; }
+            .card { padding: 1.3rem; }
+            .faq-q { width: 100%; margin-bottom: 0.3rem; }
+            .faq-a { width: 100%; text-align: left; }
+            .intro-section { padding: 1.3rem; }
+        }
+        @media (min-width: 900px) {
+            .grid-cards { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero -->
+    <div class="hero">
+        <span class="badge">产品说明 · 简洁版</span>
+        <h1>时时彩 · 功能速览</h1>
+        <div class="tagline">面向快速识别用途的结构化摘要</div>
+        <p>本页概述 <a href="https://site-ssc.com" class="inline-link">时时彩</a> 的主要特性、适用场景及使用建议，帮助新用户在一分钟内建立认知框架。所有描述均基于平台公开信息与一般使用逻辑，不做夸大延伸。</p>
+    </div>
+
+    <!-- 卡片网格：亮点与使用建议 -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3>摘要定位</h3>
+            <p>平台面向对数字排列与即时结果感兴趣的浏览者，提供清晰的数据呈现与基础交互。核心围绕“快速识别”设计，减少冗余步骤。</p>
+            <div class="meta-note">适用人群：希望直观看清走势的普通用户</div>
+        </div>
+        <div class="card">
+            <h3>亮点提取</h3>
+            <p>结构轻量、模块分区明确；响应式界面适应手机与桌面；重要数值与状态采用蓝绿色系提示，降低视觉负担。</p>
+            <div class="meta-note">技术特征：卡片化 + 高对比辅助色</div>
+        </div>
+        <div class="card">
+            <h3>使用建议</h3>
+            <p>推荐在稳定网络环境下使用，首次浏览可从概览模块入手。保持理性参与，将平台视为信息查询工具而非其他用途。</p>
+            <div class="meta-note">建议每次使用不超过30分钟</div>
+        </div>
+    </div>
+
+    <!-- 内容引入 + 场景 -->
+    <div class="intro-section">
+        <p><strong>场景举例：</strong> 一位用户希望快速判断近几期数字分布，无需注册即可参考公开图表。通过 <a href="https://site-ssc.com" class="inline-link">时时彩</a> 的频率视图与简洁列表，可在数秒内获取概貌。如果你习惯先看摘要再看细节，平台的设计顺序与此吻合。</p>
+        <p style="margin-top: 0.8rem;">另外，移动端浏览时卡片自动重排，确保在较小屏幕上依然保持可读性。功能入口采用文字链接，清晰无歧义。</p>
+    </div>
+
+    <!-- 可信但克制的说明 + FAQ -->
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0 1rem;">
+        <div style="flex: 2; min-width: 240px;">
+            <h2 style="font-size: 1.3rem; font-weight: 600; color: #09424b; margin-bottom: 0.5rem;">可信 · 克制说明</h2>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem; padding-left: 1.4rem; position: relative;">✓ 平台数据源自公开算法，无人工篡改通道</li>
+                <li style="margin-bottom: 0.5rem; padding-left: 1.4rem; position: relative;">✓ 不设自动充值或强制注册入口</li>
+                <li style="margin-bottom: 0.5rem; padding-left: 1.4rem; position: relative;">✓ 所有引导文案保持中性，不暗示收益</li>
+                <li style="margin-bottom: 0.5rem; padding-left: 1.4rem; position: relative;">✓ 页面无弹窗广告、无诱导分享按钮</li>
+            </ul>
+        </div>
+        <div style="flex: 1.8; min-width: 200px;">
+            <div class="faq-mini">
+                <h2 style="font-size: 1.1rem; font-weight: 600; color: #09424b; margin-bottom: 0.6rem;">常见理解</h2>
+                <div class="faq-item">
+                    <span class="faq-q">是否需要安装软件？</span>
+                    <span class="faq-a">纯网页，免安装</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">有历史走势吗？</span>
+                    <span class="faq-a">提供近期摘要</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">移动端是否适配？</span>
+                    <span class="faq-a">完全响应</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">数据刷新频率？</span>
+                    <span class="faq-a">分钟级更新</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 显式嵌入链接的自然句子（避免照抄，且再次出现『时时彩』） -->
+    <div class="link-wrapper">
+        <p style="font-size: 1rem; color: #1f4a53;">如果你希望直接浏览当前界面与模块布局，可在新标签页中打开 <a href="https://site-ssc.com" class="inline-link">时时彩</a> 以获取完整视图。该页面所有卡片与说明均与上述摘要一致，无隐藏内容。</p>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+        <span>产品说明页 · 信息密度 v1.3</span>
+        <span>仅供界面示意 · 无诱导成分</span>
+    </div>
+</div>
+</body>
+</html>
